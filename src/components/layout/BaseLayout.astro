@@ -1,7 +1,6 @@
 ---
 import '../../styles/global.css';
 import Header from './Header.astro';
-import Navbar from '@/components/navigation/Navbar.astro';
 import Footer from './Footer.astro';
 
 interface Props {
@@ -31,7 +30,6 @@ const metaDescription = description ?? 'J Thomas Financial — professional fina
       Skip to main content
     </a>
     <Header />
-    <Navbar />
     <main id="main-content" class="flex-1">
       <slot />
     </main>

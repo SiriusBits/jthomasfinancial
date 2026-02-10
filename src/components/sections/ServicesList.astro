@@ -1,7 +1,8 @@
 ---
 import Card from '@/components/ui/Card.astro';
 import Button from '@/components/ui/Button.astro';
-import { ChevronRight } from '@/icons/lucide-icons';
+import Icon from '@/components/ui/Icon.astro';
+import { ArrowRight } from '@/icons/lucide-icons';
 import type { Service } from '@/data/services';
 
 interface Props {
@@ -18,14 +19,18 @@ const { services } = Astro.props;
       {services.map((service) => (
         <Card title={service.title}>
           <p class="text-neutral-600 text-sm mb-4">{service.shortDescription}</p>
-          <Button href={`/services/${service.slug}`} variant="secondary" icon={ChevronRight} iconPosition="right">
+          <Button href={`/services/${service.slug}`} variant="secondary">
             Learn more
+            <Icon icon={ArrowRight} size={16} slot="icon" />
           </Button>
         </Card>
       ))}
     </div>
     <div class="mt-10 text-center">
-      <Button href="/services" icon={ChevronRight} iconPosition="right">View all services</Button>
+      <Button href="/services">
+        View all services
+        <Icon icon={ArrowRight} size={18} slot="icon" />
+      </Button>
     </div>
   </div>
 </section>

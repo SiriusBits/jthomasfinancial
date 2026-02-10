@@ -28,13 +28,13 @@ function isActive(href: string): boolean {
       />
     </a>
     <nav class="flex items-center" aria-label="Main navigation">
-      <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 md:gap-x-8">
+      <ul class="flex flex-wrap items-center gap-x-1 gap-y-2 md:gap-x-2">
         {links.map(({ href, label, icon: IconComponent }) => (
           <li>
             <a
               href={href}
               class:list={[
-                'inline-flex items-center gap-1.5 font-body text-sm font-medium transition-colors',
+                'inline-flex items-center gap-1.5 font-body text-sm font-medium transition-colors rounded px-2 py-2 md:px-3',
                 isActive(href)
                   ? 'text-gold border-b-2 border-gold'
                   : 'text-navy hover:text-gold',

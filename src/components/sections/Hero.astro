@@ -1,5 +1,6 @@
 ---
 import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
 import { ArrowRight } from '@/icons/lucide-icons';
 
 interface Props {
@@ -18,8 +19,9 @@ const { headline, subtext, ctaHref, ctaLabel } = Astro.props;
     {subtext && <p class="mt-4 text-slate-200 text-lg">{subtext}</p>}
     {ctaHref && ctaLabel && (
       <div class="mt-8">
-        <Button href={ctaHref} icon={ArrowRight} iconPosition="right" class="px-6 py-3 text-base">
+        <Button href={ctaHref} class="px-6 py-3">
           {ctaLabel}
+          <Icon icon={ArrowRight} size={18} slot="icon" />
         </Button>
       </div>
     )}

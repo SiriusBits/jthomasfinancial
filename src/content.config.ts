@@ -1,0 +1,23 @@
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const pageSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  order: z.number().optional(),
+});
+
+const pages = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: './src/content' }),
+  schema: pageSchema,
+});
+
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/services' }),
+  schema: pageSchema,
+});
+
+export const collections = {
+  pages,
+  services,
+};

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/components/layout/BaseLayout.astro';
+import ContactForm from '@/components/sections/ContactForm.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { MapPin, Phone, Mail } from '@/icons/lucide-icons';
+import { siteMetadata } from '@/data/siteMetadata';
+---
+
+<BaseLayout title="Contact — J Thomas Financial" description="Get in touch with J Thomas Financial.">
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="font-heading text-navy text-3xl font-semibold mb-8">Contact Us</h1>
+    <div class="grid gap-8 md:grid-cols-2">
+      <div class="space-y-6">
+        <div class="flex gap-3">
+          <Icon icon={MapPin} size={24} class="text-gold shrink-0" />
+          <div>
+            <p class="font-medium text-navy">Address</p>
+            <p class="text-neutral-600">{siteMetadata.contact.address}</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <Icon icon={Phone} size={24} class="text-gold shrink-0" />
+          <div>
+            <p class="font-medium text-navy">Phone</p>
+            <a href={`tel:${siteMetadata.contact.phone.replace(/\D/g, '')}`} class="text-neutral-600 hover:text-gold">{siteMetadata.contact.phone}</a>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <Icon icon={Mail} size={24} class="text-gold shrink-0" />
+          <div>
+            <p class="font-medium text-navy">Email</p>
+            <a href={`mailto:${siteMetadata.contact.email}`} class="text-neutral-600 hover:text-gold">{siteMetadata.contact.email}</a>
+          </div>
+        </div>
+      </div>
+      <ContactForm />
+    </div>
+  </main>
+</BaseLayout>

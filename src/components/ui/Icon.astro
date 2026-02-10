@@ -1,0 +1,13 @@
+---
+interface Props {
+  icon: import('astro').Component;
+  size?: number;
+  class?: string;
+}
+
+const { icon: IconComponent, size = 24, class: className } = Astro.props;
+---
+
+<span class:list={['inline-flex shrink-0', className]} aria-hidden="true">
+  <IconComponent size={size} class="text-current" />
+</span>

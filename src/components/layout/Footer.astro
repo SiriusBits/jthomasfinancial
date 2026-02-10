@@ -1,0 +1,26 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+import { Mail } from '@/icons/lucide-icons';
+// Copyright, key links (e.g. Privacy), optional address/phone
+---
+
+<footer class="border-t border-slate-200 bg-slate-50 mt-auto">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
+      <p class="text-sm text-neutral-600 font-body flex items-center gap-2">
+        <Icon icon={Mail} size={18} class="text-navy" />
+        &copy; {new Date().getFullYear()} J Thomas and Associates. All rights reserved.
+      </p>
+      <nav aria-label="Footer navigation">
+        <ul class="flex flex-wrap gap-x-6 gap-y-1">
+          <li>
+            <a href="/privacy" class="text-sm text-navy hover:text-gold transition-colors">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/contact" class="text-sm text-navy hover:text-gold transition-colors">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

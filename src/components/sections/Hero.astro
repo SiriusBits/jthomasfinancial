@@ -1,4 +1,7 @@
 ---
+import Button from '@/components/ui/Button.astro';
+import { ArrowRight } from '@/icons/lucide-icons';
+
 interface Props {
   headline: string;
   subtext?: string;
@@ -15,12 +18,9 @@ const { headline, subtext, ctaHref, ctaLabel } = Astro.props;
     {subtext && <p class="mt-4 text-slate-200 text-lg">{subtext}</p>}
     {ctaHref && ctaLabel && (
       <div class="mt-8">
-        <a
-          href={ctaHref}
-          class="inline-flex items-center justify-center font-body font-medium rounded px-6 py-3 bg-gold text-navy hover:bg-gold/90 transition-colors"
-        >
+        <Button href={ctaHref} icon={ArrowRight} iconPosition="right" class="px-6 py-3 text-base">
           {ctaLabel}
-        </a>
+        </Button>
       </div>
     )}
   </div>

@@ -13,6 +13,8 @@ import {
   Building2,
   ArrowRight,
   MapPin,
+  Briefcase,
+  ChevronRight,
 } from "@lucide/astro";
 
 export {
@@ -26,4 +28,6 @@ export {
   Building2,
   ArrowRight,
   MapPin,
+  Briefcase,
+  ChevronRight,
 };

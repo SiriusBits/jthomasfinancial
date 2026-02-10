@@ -1,11 +1,13 @@
 ---
 const pathname = Astro.url.pathname;
+import Icon from '@/components/ui/Icon.astro';
+import { Users, Briefcase, Mail, FileText } from '@/icons/lucide-icons';
 
 const links = [
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/privacy', label: 'Privacy' },
+  { href: '/about', label: 'About', icon: Users },
+  { href: '/services', label: 'Services', icon: Briefcase },
+  { href: '/contact', label: 'Contact', icon: Mail },
+  { href: '/privacy', label: 'Privacy', icon: FileText },
 ];
 
 function isActive(href: string): boolean {
@@ -27,18 +29,19 @@ function isActive(href: string): boolean {
     </a>
     <nav class="flex items-center" aria-label="Main navigation">
       <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 md:gap-x-8">
-        {links.map(({ href, label }) => (
+        {links.map(({ href, label, icon: IconComponent }) => (
           <li>
             <a
               href={href}
               class:list={[
-                'font-body text-sm font-medium transition-colors',
+                'inline-flex items-center gap-1.5 font-body text-sm font-medium transition-colors',
                 isActive(href)
                   ? 'text-gold border-b-2 border-gold'
                   : 'text-navy hover:text-gold',
               ]}
             >
-              {label}
+              <Icon icon={IconComponent} size={18} class="shrink-0" />
+              <span>{label}</span>
             </a>
           </li>
         ))}

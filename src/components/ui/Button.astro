@@ -1,24 +1,38 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   href?: string;
   variant?: 'primary' | 'secondary';
   type?: 'button' | 'submit';
   class?: string;
+  icon?: import('astro').Component;
+  iconPosition?: 'left' | 'right';
 }
 
-const { href, variant = 'primary', type = 'button', class: className } = Astro.props;
+const { href, variant = 'primary', type = 'button', class: className, icon, iconPosition = 'right' } = Astro.props;
 
 const base =
-  'inline-flex items-center justify-center font-body font-medium rounded px-4 py-2 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold';
+  'inline-flex items-center justify-center gap-2 font-body font-medium rounded px-4 py-2 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold';
 
 const variants = {
   primary: 'bg-gold text-navy hover:bg-gold/90 focus:ring-gold',
   secondary: 'border-2 border-navy text-navy hover:bg-navy hover:text-white focus:ring-navy',
 };
+
+const iconSize = 18;
 ---
 
 {href ? (
-  <a href={href} class:list={[base, variants[variant], className]}><slot /></a>
+  <a href={href} class:list={[base, variants[variant], className]}>
+    {icon && iconPosition === 'left' && <Icon icon={icon} size={iconSize} class="shrink-0" />}
+    <slot />
+    {icon && iconPosition === 'right' && <Icon icon={icon} size={iconSize} class="shrink-0" />}
+  </a>
 ) : (
-  <button type={type} class:list={[base, variants[variant], className]}><slot /></button>
+  <button type={type} class:list={[base, variants[variant], className]}>
+    {icon && iconPosition === 'left' && <Icon icon={icon} size={iconSize} class="shrink-0" />}
+    <slot />
+    {icon && iconPosition === 'right' && <Icon icon={icon} size={iconSize} class="shrink-0" />}
+  </button>
 )}

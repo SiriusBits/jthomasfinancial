@@ -4,7 +4,7 @@ import Button from '@/components/ui/Button.astro';
 import { getEntry, render } from 'astro:content';
 
 export function getStaticPaths() {
-  const slugs = ['tax-planning', 'bookkeeping', 'payroll', 'financial-statements', 'consulting'];
+  const slugs = ['tax-planning', 'payroll', 'financial-statements', 'consulting'];
   return slugs.map((slug) => ({ params: { slug } }));
 }
 

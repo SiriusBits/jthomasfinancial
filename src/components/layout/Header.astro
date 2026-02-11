@@ -1,13 +1,13 @@
 ---
 const pathname = Astro.url.pathname;
-import Icon from '@/components/ui/Icon.astro';
-import { Users, Briefcase, Mail, FileText } from '@/icons/lucide-icons';
+import Icon from "@/components/ui/Icon.astro";
+import { Users, Briefcase, Mail, FileText } from "@/icons/lucide-icons";
 
 const links = [
-  { href: '/about', label: 'About', icon: Users },
-  { href: '/services', label: 'Services', icon: Briefcase },
-  { href: '/contact', label: 'Contact', icon: Mail },
-  { href: '/privacy', label: 'Privacy', icon: FileText },
+  { href: "/about", label: "About", icon: Users },
+  { href: "/services", label: "Services", icon: Briefcase },
+  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/privacy", label: "Privacy", icon: FileText },
 ];
 
 function isActive(href: string): boolean {
@@ -15,37 +15,138 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="border-b border-slate-200 bg-white">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-    <a href="/" class="flex items-center shrink-0" aria-label="J Thomas and Associates — Home">
+<header
+  id="site-header"
+  class="sticky top-0 z-50 border-b border-slate-200 bg-white transition-all duration-300 ease-out"
+  data-scrolled="false"
+  data-past-hero="false"
+>
+  <div
+    class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4"
+  >
+    <a
+      href="/"
+      class="relative flex items-center shrink-0"
+      aria-label="J Thomas and Associates — Home"
+    >
       <img
         src="/assets/logo-primary.svg"
         alt="J Thomas and Associates"
         width="180"
         height="58"
-        class="h-9 w-auto md:h-11"
+        class="header-logo-primary w-auto transition-all duration-300 ease-out"
         fetchpriority="high"
+      />
+      <img
+        src="/assets/jtf-logo-reversed.svg"
+        alt=""
+        width="180"
+        height="58"
+        class="header-logo-reversed absolute left-0 top-1/2 -translate-y-1/2 w-auto transition-all duration-300 ease-out opacity-0 pointer-events-none"
+        aria-hidden="true"
       />
     </a>
     <nav class="flex items-center" aria-label="Main navigation">
       <ul class="flex flex-wrap items-center gap-x-1 gap-y-2 md:gap-x-2">
-        {links.map(({ href, label, icon: IconComponent }) => (
-          <li>
-            <a
-              href={href}
-              class:list={[
-                'inline-flex items-center gap-1.5 font-body text-sm font-medium transition-colors rounded px-2 py-2 md:px-3',
-                isActive(href)
-                  ? 'text-gold border-b-2 border-gold'
-                  : 'text-navy hover:text-gold',
-              ]}
-            >
-              <Icon icon={IconComponent} size={18} class="shrink-0" />
-              <span>{label}</span>
-            </a>
-          </li>
-        ))}
+        {
+          links.map(({ href, label, icon: IconComponent }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  "nav-link inline-flex items-center gap-1.5 font-body text-sm font-medium transition-colors rounded px-2 py-2 md:px-3",
+                  isActive(href)
+                    ? "text-gold border-b-2 border-gold"
+                    : "text-navy hover:text-gold",
+                ]}
+              >
+                <Icon icon={IconComponent} size={18} class="shrink-0" />
+                <span>{label}</span>
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>
 </header>
+
+<style>
+  /* Initial state: logo 1.5x bigger (h-9→h-14, h-11→h-16) */
+  #site-header:not([data-scrolled="true"]) .header-logo-primary {
+    height: 3.5rem;
+  }
+  @media (min-width: 768px) {
+    #site-header:not([data-scrolled="true"]) .header-logo-primary {
+      height: 4rem;
+    }
+  }
+
+  /* Compact state: current size (h-9 md:h-11) */
+  #site-header[data-scrolled="true"] .header-logo-primary {
+    height: 2.25rem;
+  }
+  @media (min-width: 768px) {
+    #site-header[data-scrolled="true"] .header-logo-primary {
+      height: 2.75rem;
+    }
+  }
+
+  /* Past hero: navy bg, show reversed logo, hide primary */
+  #site-header[data-past-hero="true"] {
+    background-color: var(--color-navy);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  #site-header[data-past-hero="true"] .header-logo-primary {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #site-header[data-past-hero="true"] .header-logo-reversed {
+    opacity: 1;
+    pointer-events: auto;
+    height: 2.25rem;
+  }
+  @media (min-width: 768px) {
+    #site-header[data-past-hero="true"] .header-logo-reversed {
+      height: 2.75rem;
+    }
+  }
+
+  /* Nav links: white when past hero, gold on hover */
+  #site-header[data-past-hero="true"] .nav-link:not([class*="text-gold"]) {
+    color: white !important;
+  }
+  #site-header[data-past-hero="true"]
+    .nav-link:not([class*="text-gold"]):hover {
+    color: var(--color-gold) !important;
+  }
+</style>
+
+<script>
+  const header = document.getElementById("site-header");
+  const hero = document.getElementById("hero");
+
+  function updateHeader() {
+    if (!header) return;
+
+    const scrollY = window.scrollY || window.pageYOffset;
+    const scrolled = scrollY > 20;
+
+    let pastHero = false;
+    if (hero) {
+      const heroRect = hero.getBoundingClientRect();
+      pastHero = heroRect.bottom < 0;
+    } else {
+      pastHero = true;
+    }
+
+    header.setAttribute("data-scrolled", String(scrolled));
+    header.setAttribute("data-past-hero", String(pastHero));
+  }
+
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener("resize", updateHeader);
+  updateHeader();
+</script>

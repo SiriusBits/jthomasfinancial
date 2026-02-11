@@ -1,16 +1,31 @@
 ---
-import BaseLayout from '@/components/layout/BaseLayout.astro';
-import { getEntry, render } from 'astro:content';
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+import { getEntry, render } from "astro:content";
 
-const entry = await getEntry('pages', 'about');
-if (!entry) throw new Error('About page content not found');
+const entry = await getEntry("pages", "about");
+if (!entry) throw new Error("About page content not found");
 const { Content } = await render(entry);
 ---
 
-<BaseLayout title={`${entry.data.title} — J Thomas Financial`} description={entry.data.description}>
-  <main class="max-w-4xl mx-auto px-4 py-12">
-    <article class="prose prose-slate max-w-none">
-      <Content />
-    </article>
+<BaseLayout
+  title={`${entry.data.title} — J Thomas Financial`}
+  description={entry.data.description}
+>
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid gap-10 md:grid-cols-2 md:gap-12 md:items-center">
+      <div class="rounded-lg overflow-hidden shadow-md bg-slate-100">
+        <img
+          src="/assets/about-placeholder.svg"
+          alt="J Thomas and Associates — our team or office"
+          width="600"
+          height="400"
+          class="w-full h-auto object-cover"
+          loading="eager"
+        />
+      </div>
+      <article class="prose prose-slate max-w-none">
+        <Content />
+      </article>
+    </div>
   </main>
 </BaseLayout>

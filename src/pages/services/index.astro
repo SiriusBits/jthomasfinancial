@@ -2,20 +2,29 @@
 import BaseLayout from '@/components/layout/BaseLayout.astro';
 import Card from '@/components/ui/Card.astro';
 import Button from '@/components/ui/Button.astro';
-import { ChevronRight } from '@/icons/lucide-icons';
+import Icon from '@/components/ui/Icon.astro';
+import { ArrowRight, Calculator, DollarSign, FileText, Briefcase } from '@/icons/lucide-icons';
 import { servicesList } from '@/data/services';
+
+const iconMap: Record<string, import('astro').Component> = {
+  'calculator': Calculator,
+  'dollar-sign': DollarSign,
+  'file-text': FileText,
+  'briefcase': Briefcase,
+};
 ---
 
 <BaseLayout title="Services — J Thomas Financial" description="Tax planning, payroll, financial statements, and consulting.">
   <main class="max-w-6xl mx-auto px-4 py-12">
     <h1 class="font-heading text-navy text-3xl font-semibold mb-2">Our Services</h1>
     <p class="text-neutral-600 mb-10 max-w-2xl">We offer a range of professional finance and accounting services to support your business.</p>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-6 sm:grid-cols-2">
       {servicesList.map((service) => (
-        <Card title={service.title}>
+        <Card title={service.title} icon={iconMap[service.icon]}>
           <p class="text-neutral-600 text-sm mb-4">{service.shortDescription}</p>
-          <Button href={`/services/${service.slug}`} variant="secondary" icon={ChevronRight} iconPosition="right">
+          <Button href={`/services/${service.slug}`} variant="secondary">
             Learn more
+            <Icon icon={ArrowRight} size={16} slot="icon" />
           </Button>
         </Card>
       ))}

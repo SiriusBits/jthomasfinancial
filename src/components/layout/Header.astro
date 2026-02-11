@@ -114,11 +114,19 @@ function isActive(href: string): boolean {
     }
   }
 
-  /* Nav links: white when past hero, gold on hover (target inactive via text-navy) */
+  /* Nav links: white when past hero, gold on hover */
   #site-header[data-past-hero="true"] .nav-link[class*="text-navy"] {
     color: white !important;
   }
   #site-header[data-past-hero="true"] .nav-link[class*="text-navy"]:hover {
+    color: var(--color-gold) !important;
+  }
+
+  /* Active links: white text on navy for visibility, gold border indicates active (border-gold unique to active) */
+  #site-header[data-past-hero="true"] .nav-link[class*="border-gold"] {
+    color: white !important;
+  }
+  #site-header[data-past-hero="true"] .nav-link[class*="border-gold"]:hover {
     color: var(--color-gold) !important;
   }
 </style>

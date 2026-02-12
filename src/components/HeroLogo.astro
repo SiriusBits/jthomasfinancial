@@ -43,19 +43,33 @@ const { class: className } = Astro.props;
             hero-shieldFillRight 0.25s ease-out 1.15s forwards;
         }
 
+        #letter-t {
+          clip-path: inset(0 0 100% 0);
+          animation: hero-letterTReveal 0.8s ease-out 1.4s forwards;
+        }
+
         #chart-arrow {
           stroke-dasharray: 400;
           stroke-dashoffset: 400;
           transform-origin: center;
           animation:
-            hero-drawArrow 1.2s ease-out 1.4s forwards,
-            hero-fillIn 0.3s ease-out 2.6s forwards,
-            hero-lift 0.4s ease-out 2.9s forwards;
+            hero-drawArrow 1.2s ease-out 2.2s forwards,
+            hero-fillIn 0.3s ease-out 3.4s forwards,
+            hero-lift 0.4s ease-out 3.7s forwards;
         }
 
         @keyframes hero-shieldTrace {
           to {
             stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes hero-letterTReveal {
+          from {
+            clip-path: inset(0 0 100% 0);
+          }
+          to {
+            clip-path: inset(0 0 0 0);
           }
         }
 

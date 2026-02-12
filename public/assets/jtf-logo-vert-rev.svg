@@ -25,19 +25,33 @@
       shieldFillRight 0.25s ease-out 1.15s forwards;
   }
 
+  #letter-t {
+    clip-path: inset(0 0 100% 0);
+    animation: letterTReveal 0.8s ease-out 1.4s forwards;
+  }
+
   #chart-arrow {
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
     transform-origin: center;
     animation:
-      drawArrow 1.2s ease-out 1.4s forwards,
-      fillIn 0.3s ease-out 2.6s forwards,
-      lift 0.4s ease-out 2.9s forwards;
+      drawArrow 1.2s ease-out 2.2s forwards,
+      fillIn 0.3s ease-out 3.4s forwards,
+      lift 0.4s ease-out 3.7s forwards;
   }
 
   @keyframes shieldTrace {
     to {
       stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes letterTReveal {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
     }
   }
 

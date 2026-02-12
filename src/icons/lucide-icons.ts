@@ -15,6 +15,7 @@ import {
   MapPin,
   Briefcase,
   ChevronRight,
+  ChevronDown,
   DollarSign,
 } from "@lucide/astro";
 
@@ -31,5 +32,6 @@ export {
   MapPin,
   Briefcase,
   ChevronRight,
+  ChevronDown,
   DollarSign,
 };

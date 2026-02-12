@@ -1,26 +1,9 @@
 ---
-import BaseLayout from '@/components/layout/BaseLayout.astro';
-import Button from '@/components/ui/Button.astro';
-import { getEntry, render } from 'astro:content';
-
 export function getStaticPaths() {
   const slugs = ['tax-planning', 'payroll', 'financial-statements', 'consulting'];
   return slugs.map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
-const entry = await getEntry('services', slug!);
-if (!entry) return Astro.redirect('/services');
-const { Content } = await render(entry);
+return Astro.redirect(`/services#${slug}`);
 ---
-
-<BaseLayout title={`${entry.data.title} — J Thomas Financial`} description={entry.data.description}>
-  <main class="max-w-4xl mx-auto px-4 py-12">
-    <p class="mb-6">
-      <a href="/services" class="text-gold hover:underline font-body text-sm">← Back to Services</a>
-    </p>
-    <article class="prose prose-slate max-w-none">
-      <Content />
-    </article>
-  </main>
-</BaseLayout>

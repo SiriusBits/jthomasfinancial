@@ -1,15 +1,21 @@
 ---
-import Card from '@/components/ui/Card.astro';
-import Button from '@/components/ui/Button.astro';
-import Icon from '@/components/ui/Icon.astro';
-import { ArrowRight, Calculator, DollarSign, FileText, Briefcase } from '@/icons/lucide-icons';
-import type { Service } from '@/data/services';
+import Card from "@/components/ui/Card.astro";
+import Button from "@/components/ui/Button.astro";
+import Icon from "@/components/ui/Icon.astro";
+import {
+  ArrowRight,
+  Calculator,
+  DollarSign,
+  FileText,
+  Briefcase,
+} from "@/icons/lucide-icons";
+import type { Service } from "@/data/services";
 
-const iconMap: Record<string, import('astro').Component> = {
-  'calculator': Calculator,
-  'dollar-sign': DollarSign,
-  'file-text': FileText,
-  'briefcase': Briefcase,
+const iconMap: Record<string, import("astro").Component> = {
+  calculator: Calculator,
+  "dollar-sign": DollarSign,
+  "file-text": FileText,
+  briefcase: Briefcase,
 };
 
 interface Props {
@@ -21,17 +27,23 @@ const { services } = Astro.props;
 
 <section class="py-12 md:py-16">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold mb-8">Our Services</h2>
+    <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold mb-8">
+      Our Services
+    </h2>
     <div class="grid gap-6 sm:grid-cols-2">
-      {services.map((service) => (
-        <Card title={service.title} icon={iconMap[service.icon]}>
-          <p class="text-neutral-600 text-sm mb-4">{service.shortDescription}</p>
-          <Button href={`/services/${service.slug}`} variant="secondary">
-            Learn more
-            <Icon icon={ArrowRight} size={16} slot="icon" />
-          </Button>
-        </Card>
-      ))}
+      {
+        services.map((service) => (
+          <Card title={service.title} icon={iconMap[service.icon]}>
+            <p class="text-neutral-600 text-sm mb-4">
+              {service.shortDescription}
+            </p>
+            <Button href={`/services/${service.slug}`} variant="secondary">
+              Learn more
+              <Icon icon={ArrowRight} size={16} slot="icon" />
+            </Button>
+          </Card>
+        ))
+      }
     </div>
     <div class="mt-10 text-center">
       <Button href="/services">

@@ -19,11 +19,19 @@ const { headline, subtext, ctaHref, ctaLabel } = Astro.props;
   class="relative bg-navy text-white py-16 md:py-24 overflow-hidden"
 >
   <div
-    class="absolute inset-0 opacity-40"
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/assets/images/smiling-business-people-around-a-conference-table.jpg');"
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-0 bg-navy/75"
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-0 opacity-30"
     style="background-image: url('/assets/hero-pattern.svg'); background-size: 60px 60px;"
     aria-hidden="true"
-  >
-  </div>
+  />
   <div
     class="relative z-10 max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8"
   >

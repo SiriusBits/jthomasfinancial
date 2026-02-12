@@ -2,10 +2,11 @@
 interface Props {
   title?: string;
   icon?: any;
+  image?: string;
   class?: string;
 }
 
-const { title, icon: IconComponent, class: className } = Astro.props;
+const { title, icon: IconComponent, image, class: className } = Astro.props;
 ---
 
 <div class:list={['rounded-lg border border-slate-200 bg-white shadow-sm overflow-hidden', className]}>
@@ -19,7 +20,20 @@ const { title, icon: IconComponent, class: className } = Astro.props;
       {title}
     </h3>
   )}
-  <div class={title ? 'px-5 pb-5' : 'p-5'}>
-    <slot />
+  <div class={image ? 'px-5 pb-5 flex gap-4 items-start' : title ? 'px-5 pb-5' : 'p-5'}>
+    {image && (
+      <div class="w-[180px] h-[120px] shrink-0 overflow-hidden rounded-md">
+        <img
+          src={image}
+          alt=""
+          class="h-full w-full object-cover"
+          width="180"
+          height="120"
+        />
+      </div>
+    )}
+    <div class={image ? 'min-w-0 flex-1 flex flex-col gap-4' : ''}>
+      <slot />
+    </div>
   </div>
 </div>

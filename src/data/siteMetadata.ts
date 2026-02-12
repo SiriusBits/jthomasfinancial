@@ -3,7 +3,7 @@ export const siteMetadata = {
   shortName: 'J Thomas Financial',
   description: 'Professional finance advisory services.',
   contact: {
-    address: '123 Main Street, Suite 100, Anytown, ST 12345',
+    address: '21851 Center Ridge Rd, Rocky River, OH 44116',
     phone: '(555) 123-4567',
     email: 'info@jthomasfinancial.com',
   },

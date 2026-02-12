@@ -37,7 +37,7 @@ const { services } = Astro.props;
             <p class="text-neutral-600 text-sm mb-4">
               {service.shortDescription}
             </p>
-            <Button href={`/services/${service.slug}`} variant="secondary">
+            <Button href={`/services#${service.slug}`} variant="secondary">
               Learn more
               <Icon icon={ArrowRight} size={16} slot="icon" />
             </Button>

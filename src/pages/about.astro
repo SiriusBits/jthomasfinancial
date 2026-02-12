@@ -13,32 +13,44 @@ const { Content } = await render(entry);
 >
   <main class="max-w-6xl mx-auto px-4 py-12">
     <div class="grid gap-10 md:grid-cols-2 md:gap-12 md:items-center">
-      <div class="rounded-lg overflow-hidden shadow-md bg-slate-100">
+      <div class="rounded-lg overflow-hidden shadow-md bg-slate-100 aspect-[4/3]">
         <img
-          src="/assets/about-placeholder.svg"
+          src="/assets/images/consulting-two-business-men-at-a-desk.jpg"
           alt="J Thomas and Associates — our team or office"
           width="600"
-          height="400"
-          class="w-full h-auto object-cover"
+          height="450"
+          class="w-full h-full object-cover object-center"
           loading="eager"
         />
       </div>
-      <article class="prose prose-slate max-w-none">
+      <article class="prose prose-slate max-w-none [&_h1]:font-heading [&_h1]:text-navy [&_h1]:text-2xl [&_h1]:md:text-3xl [&_h1]:font-semibold">
         <Content />
       </article>
     </div>
 
     <section class="mt-16 md:mt-24 pt-16 md:pt-20 border-t border-slate-200">
-      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold mb-8">
+      <h2
+        class="font-heading text-navy text-2xl md:text-3xl font-semibold mb-8"
+      >
         Our Commitment to Excellence
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 md:gap-12 md:items-start">
+      <div
+        class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 md:gap-12 md:items-start"
+      >
         <div>
           <p class="text-neutral-600 leading-relaxed mb-6">
-            At J Thomas and Associates, we believe that exceptional financial services go beyond numbers and compliance. We're committed to building lasting relationships with our clients based on trust, transparency, and results. Our team takes the time to understand your unique situation and goals, providing guidance that's both technically sound and practically applicable.
+            At J Thomas and Associates, we believe that exceptional financial
+            services go beyond numbers and compliance. We're committed to
+            building lasting relationships with our clients based on trust,
+            transparency, and results. Our team takes the time to understand
+            your unique situation and goals, providing guidance that's both
+            technically sound and practically applicable.
           </p>
           <p class="text-neutral-600 leading-relaxed">
-            We invest in ongoing professional development and stay current with evolving regulations and best practices to ensure you receive the highest quality service. When you work with us, you gain a trusted advisor dedicated to your financial success.
+            We invest in ongoing professional development and stay current with
+            evolving regulations and best practices to ensure you receive the
+            highest quality service. When you work with us, you gain a trusted
+            advisor dedicated to your financial success.
           </p>
         </div>
         <div class="md:pl-4 md:border-l md:border-slate-200">
@@ -47,19 +59,33 @@ const { Content } = await render(entry);
           </h3>
           <ul class="space-y-3 list-none pl-0">
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0" aria-hidden="true" />
-              <span class="text-neutral-600">Integrity in every interaction</span>
+              <span
+                class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0"
+                aria-hidden="true"></span>
+              <span class="text-neutral-600"
+                >Integrity in every interaction</span
+              >
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0" aria-hidden="true" />
-              <span class="text-neutral-600">Excellence in service delivery</span>
+              <span
+                class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0"
+                aria-hidden="true"></span>
+              <span class="text-neutral-600"
+                >Excellence in service delivery</span
+              >
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0" aria-hidden="true" />
-              <span class="text-neutral-600">Responsiveness to client needs</span>
+              <span
+                class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0"
+                aria-hidden="true"></span>
+              <span class="text-neutral-600"
+                >Responsiveness to client needs</span
+              >
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0" aria-hidden="true" />
+              <span
+                class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold shrink-0"
+                aria-hidden="true"></span>
               <span class="text-neutral-600">Continuous improvement</span>
             </li>
           </ul>

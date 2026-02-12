@@ -1,0 +1,31 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { ArrowRight } from '@/icons/lucide-icons';
+---
+
+<section class="py-16 md:py-24 bg-navy">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="rounded-xl bg-white shadow-lg p-8 md:p-10">
+      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold mb-6">
+        Ready to Get Started?
+      </h2>
+      <p class="text-neutral-600 mb-4">
+        Take the first step toward achieving your financial goals. Contact J Thomas and Associates today to schedule a consultation and discover how our professional finance advisory and accounting services can support your success.
+      </p>
+      <p class="text-neutral-600 mb-8">
+        Our team is ready to answer your questions and develop a customized plan that addresses your unique needs. Whether you're looking for ongoing support or assistance with a specific project, we're here to help.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <Button href="/contact" class="bg-navy text-white hover:bg-navy/90 border-0 focus:ring-navy">
+          Schedule a consultation
+          <Icon icon={ArrowRight} size={18} slot="icon" />
+        </Button>
+        <Button href="/services" variant="secondary">
+          View all services
+          <Icon icon={ArrowRight} size={18} slot="icon" />
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

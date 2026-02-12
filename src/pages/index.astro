@@ -3,6 +3,7 @@ import BaseLayout from '@/components/layout/BaseLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
 import ServicesList from '@/components/sections/ServicesList.astro';
 import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
+import ReadyToGetStarted from '@/components/sections/ReadyToGetStarted.astro';
 import { servicesList } from '@/data/services';
 ---
 
@@ -15,4 +16,5 @@ import { servicesList } from '@/data/services';
   />
   <ServicesList services={servicesList} />
   <WhyChooseUs />
+  <ReadyToGetStarted />
 </BaseLayout>

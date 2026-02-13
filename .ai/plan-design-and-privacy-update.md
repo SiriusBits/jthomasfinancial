@@ -88,7 +88,7 @@ This plan addresses the flat/boxy feel, header layout, navigation, icon usage, i
   1. **Privacy Policy** (main body)
   2. **SMS Terms & Conditions** (clearly separated, e.g. H2 “SMS Terms & Conditions”)
 
-- **Privacy Policy sections to include (adapted for J Thomas and Associates):**
+- **Privacy Policy sections to include (adapted for Thomas and Associates):**
   - **Intro:** Why we care about privacy; that we use PII to tailor services; by providing information you agree to this policy.
   - **Obtaining client information:** That we need certain personal information to perform services; examples of sources (calls, emails, tax returns, financial documents, questionnaires, etc.).
   - **Types of information collected:** e.g. name, dependents, email, physical address, phone, SSN/TIN/EIN, DOB, driver’s license, etc., as needed for authorized services.
@@ -111,7 +111,7 @@ This plan addresses the flat/boxy feel, header layout, navigation, icon usage, i
   - **Opt-out:** Reply “STOP” to any SMS or contact us to be removed.
   - **Help:** Reply “HELP” or contact us (e.g. link to Contact or privacy page).
 
-**Implementation:** One `privacy.mdx` with the above structure (H1 “Privacy Policy”, then H2s for each section, then H2 “SMS Terms & Conditions” and its subsections). Use your firm name (“J Thomas and Associates” / “we”, “us”, “our”) and contact details from `siteMetadata` or hardcode in the MDX. No code changes required beyond ensuring the privacy page has enough typography (prose) for long-form reading; optional “Table of contents” at the top with anchor links to each H2.
+**Implementation:** One `privacy.mdx` with the above structure (H1 “Privacy Policy”, then H2s for each section, then H2 “SMS Terms & Conditions” and its subsections). Use your firm name (“Thomas and Associates” / “we”, “us”, “our”) and contact details from `siteMetadata` or hardcode in the MDX. No code changes required beyond ensuring the privacy page has enough typography (prose) for long-form reading; optional “Table of contents” at the top with anchor links to each H2.
 
 **Acceptance:** `/privacy` contains a full privacy policy and a full SMS policy; structure and topics match the reference; firm name and contact info are correct; no placeholder or “TBD” text.
 

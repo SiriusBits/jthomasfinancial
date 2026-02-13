@@ -1,5 +1,5 @@
 export const siteMetadata = {
-  name: 'J Thomas and Associates',
+  name: 'Thomas and Associates',
   shortName: 'J Thomas Financial',
   description: 'Professional finance advisory services.',
   contact: {

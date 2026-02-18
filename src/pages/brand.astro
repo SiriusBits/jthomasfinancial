@@ -1,0 +1,368 @@
+---
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+
+type Asset = {
+  label: string;
+  previewSrc: string;
+  downloadFile: string;
+  usage: string;
+  className?: string;
+  previewBg?: "light" | "dark";
+};
+
+const logoAssets: Asset[] = [
+  {
+    label: "Primary Horizontal Logo",
+    previewSrc: "/assets/brand/jtf-logo.svg",
+    downloadFile: "jtf-logo.svg",
+    usage: "Default logo for light backgrounds.",
+    className: "max-w-[18rem]",
+    previewBg: "light",
+  },
+  {
+    label: "Reversed Horizontal Logo",
+    previewSrc: "/assets/jtf-logo-reversed.svg",
+    downloadFile: "jtf-logo-reversed.svg",
+    usage: "Use on dark navy backgrounds only.",
+    className: "max-w-[18rem]",
+    previewBg: "dark",
+  },
+  {
+    label: "Mono Horizontal Logo",
+    previewSrc: "/assets/brand/jtf-logo-mono.svg",
+    downloadFile: "jtf-logo-mono.svg",
+    usage: "Single-color applications when needed.",
+    className: "max-w-[18rem]",
+    previewBg: "light",
+  },
+  {
+    label: "Primary Vertical Logo",
+    previewSrc: "/assets/brand/jtf-logo-vert.svg",
+    downloadFile: "jtf-logo-vert.svg",
+    usage: "Vertical format for constrained layouts.",
+    className: "max-w-[8rem]",
+    previewBg: "light",
+  },
+  {
+    label: "Reversed Vertical Logo",
+    previewSrc: "/assets/jtf-logo-vert-rev.svg",
+    downloadFile: "jtf-logo-vert-rev.svg",
+    usage: "Vertical option for dark backgrounds.",
+    className: "max-w-[8rem]",
+    previewBg: "dark",
+  },
+  {
+    label: "Mono Vertical Logo",
+    previewSrc: "/assets/brand/jtf-logo-vert-mono.svg",
+    downloadFile: "jtf-logo-vert-mono.svg",
+    usage: "Single-color vertical lockup.",
+    className: "max-w-[8rem]",
+    previewBg: "light",
+  },
+];
+
+const markAssets: Asset[] = [
+  {
+    label: "Primary Brand Mark",
+    previewSrc: "/assets/brand/jtf-brand-mark.svg",
+    downloadFile: "jtf-brand-mark.svg",
+    usage: "Icon-only usage in compact placements.",
+    className: "max-w-[4.5rem]",
+    previewBg: "light",
+  },
+  {
+    label: "Reversed Brand Mark",
+    previewSrc: "/assets/brand/jtf-brand-mark-rev.svg",
+    downloadFile: "jtf-brand-mark-rev.svg",
+    usage: "Use on dark backgrounds only.",
+    className: "max-w-[4.5rem]",
+    previewBg: "dark",
+  },
+  {
+    label: "Mono Brand Mark",
+    previewSrc: "/assets/brand/jtf-brand-mark-mono.svg",
+    downloadFile: "jtf-brand-mark-mono.svg",
+    usage: "Single-color brand mark for simplified use.",
+    className: "max-w-[4.5rem]",
+    previewBg: "light",
+  },
+];
+
+const allAssets = [...logoAssets, ...markAssets];
+const fileDownloadGroups = [
+  {
+    title: "Brand Mark",
+    files: [
+      { label: "Brand Mark - Primary (SVG)", file: "jtf-brand-mark.svg" },
+      { label: "Brand Mark - Primary (PDF)", file: "jtf-brand-mark.pdf" },
+      { label: "Brand Mark - Monochrome (SVG)", file: "jtf-brand-mark-mono.svg" },
+      { label: "Brand Mark - Monochrome (PNG)", file: "jtf-brand-mark-mono.png" },
+      { label: "Brand Mark - Monochrome (PDF)", file: "jtf-brand-mark-mono.pdf" },
+      { label: "Brand Mark - Reversed (SVG)", file: "jtf-brand-mark-rev.svg" },
+      { label: "Brand Mark - Reversed (PNG)", file: "jtf-brand-mark-rev.png" },
+      { label: "Brand Mark - Reversed (PDF)", file: "jtf-brand-mark-rev.pdf" },
+    ],
+  },
+  {
+    title: "Logo",
+    files: [
+      { label: "Logo - Primary (SVG)", file: "jtf-logo.svg" },
+      { label: "Logo - Primary (PNG)", file: "jtf-logo.png" },
+      { label: "Logo - Primary (PDF)", file: "jtf-logo.pdf" },
+      { label: "Logo - Monochrome (SVG)", file: "jtf-logo-mono.svg" },
+      { label: "Logo - Monochrome (PNG)", file: "jtf-logo-mono.png" },
+      { label: "Logo - Monochrome (PDF)", file: "jtf-logo-mono.pdf" },
+      { label: "Logo - Reversed (SVG)", file: "jtf-logo-reversed.svg" },
+      { label: "Logo - Reversed (PDF)", file: "jtf-logo-reversed.pdf" },
+    ],
+  },
+  {
+    title: "Vertical Logo",
+    files: [
+      { label: "Vertical Logo - Primary (SVG)", file: "jtf-logo-vert.svg" },
+      { label: "Vertical Logo - Primary (PNG)", file: "jtf-logo-vert.png" },
+      { label: "Vertical Logo - Primary (PDF)", file: "jtf-logo-vert.pdf" },
+      { label: "Vertical Logo - Monochrome (SVG)", file: "jtf-logo-vert-mono.svg" },
+      { label: "Vertical Logo - Monochrome (PNG)", file: "jtf-logo-vert-mono.png" },
+      { label: "Vertical Logo - Monochrome (PDF)", file: "jtf-logo-vert-mono.pdf" },
+      { label: "Vertical Logo - Reversed (SVG)", file: "jtf-logo-vert-rev.svg" },
+      { label: "Vertical Logo - Reversed (PDF)", file: "jtf-logo-vert-rev.pdf" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Brand Guide & Assets — J Thomas Financial"
+  description="Brand usage standards, typography, color palette, and downloadable J Thomas Financial brand assets."
+>
+  <main class="max-w-6xl mx-auto px-4 py-12 space-y-14">
+    <section class="grid gap-8 md:grid-cols-[1.25fr_1fr] md:items-center">
+      <div class="space-y-4">
+        <p class="text-sm font-medium tracking-[0.12em] uppercase text-gold">Brand Guide</p>
+        <h1 class="font-heading text-navy text-3xl md:text-4xl font-semibold leading-tight">
+          J Thomas Financial Brand System
+        </h1>
+        <p class="text-neutral-700 leading-relaxed max-w-2xl">
+          This guide establishes consistent, accessible usage of the J Thomas Financial identity. Use approved
+          logo files, follow spacing and color rules, and preserve a conservative, professional presentation.
+        </p>
+      </div>
+      <div class="rounded-lg border border-slate-200 bg-white p-6 space-y-4">
+        <h2 class="font-heading text-navy text-xl font-semibold">Brand kit download</h2>
+        <p class="text-sm text-neutral-600">
+          Download a complete bundle that includes the brand guide in TXT/PDF format and all logo/brand-mark assets.
+        </p>
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="/downloads/brand/kit.zip"
+            download
+            class="inline-flex items-center justify-center rounded bg-gold text-navy px-4 py-2 text-sm font-medium hover:bg-gold/90 transition-colors"
+          >
+            Download Brand Kit (.zip)
+          </a>
+          <a
+            href="/downloads/brand/kit.txt"
+            download
+            class="text-sm font-medium text-navy hover:text-gold hover:underline"
+          >
+            TXT
+          </a>
+          <a
+            href="/downloads/brand/kit.pdf"
+            download
+            class="text-sm font-medium text-navy hover:text-gold hover:underline"
+          >
+            PDF
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold">Logo Rules</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-5">
+          <h3 class="font-heading text-emerald-800 text-lg font-semibold mb-3">Do</h3>
+          <ul class="space-y-2 text-sm text-emerald-900">
+            <li>Use approved logo files only.</li>
+            <li>Maintain clear space around all lockups.</li>
+            <li>Select light or reversed logo based on background contrast.</li>
+            <li>Use brand mark only when space is limited and context is clear.</li>
+          </ul>
+        </div>
+        <div class="rounded-lg border border-rose-200 bg-rose-50 p-5">
+          <h3 class="font-heading text-rose-800 text-lg font-semibold mb-3">Don't</h3>
+          <ul class="space-y-2 text-sm text-rose-900">
+            <li>Do not distort, skew, or stretch logos.</li>
+            <li>Do not add shadows, bevels, glows, or decorative effects.</li>
+            <li>Do not recolor logo elements outside the approved palette.</li>
+            <li>Do not place low-contrast logos over busy backgrounds.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold">Do and Don't Examples</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="rounded-lg border border-slate-200 p-5 bg-white space-y-3">
+          <p class="text-sm font-semibold text-emerald-700 uppercase tracking-wide">Do: Correct proportions</p>
+          <div class="rounded border border-slate-200 bg-neutral-50 min-h-28 p-4 flex items-center justify-center">
+            <img src="/assets/brand/jtf-logo.svg" alt="Correct J Thomas Financial logo usage" class="max-w-[16rem] h-auto" />
+          </div>
+        </div>
+        <div class="rounded-lg border border-slate-200 p-5 bg-white space-y-3">
+          <p class="text-sm font-semibold text-rose-700 uppercase tracking-wide">Don't: Stretch or skew</p>
+          <div class="rounded border border-slate-200 bg-neutral-50 min-h-28 p-4 flex items-center justify-center overflow-hidden">
+            <img
+              src="/assets/brand/jtf-logo.svg"
+              alt="Incorrect stretched logo example"
+              class="max-w-[16rem] h-auto scale-y-[0.72] scale-x-[1.18]"
+            />
+          </div>
+        </div>
+        <div class="rounded-lg border border-slate-200 p-5 bg-white space-y-3">
+          <p class="text-sm font-semibold text-emerald-700 uppercase tracking-wide">Do: Reversed logo on navy</p>
+          <div class="rounded border border-navy bg-navy min-h-28 p-4 flex items-center justify-center">
+            <img src="/assets/jtf-logo-reversed.svg" alt="Correct reversed logo on dark background" class="max-w-[16rem] h-auto" />
+          </div>
+        </div>
+        <div class="rounded-lg border border-slate-200 p-5 bg-white space-y-3">
+          <p class="text-sm font-semibold text-rose-700 uppercase tracking-wide">Don't: Add effects</p>
+          <div class="rounded border border-slate-200 bg-neutral-50 min-h-28 p-4 flex items-center justify-center">
+            <img src="/assets/brand/jtf-logo.svg" alt="Incorrect drop-shadow logo example" class="max-w-[16rem] h-auto drop-shadow-[0_6px_8px_rgba(11,34,56,0.5)]" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold">Color Palette</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-lg border border-slate-200 overflow-hidden">
+          <div class="h-20 bg-navy"></div>
+          <div class="p-4">
+            <p class="font-heading text-navy font-semibold">Navy</p>
+            <p class="text-sm text-neutral-600">#0B2238</p>
+            <p class="mt-2 text-sm text-neutral-700">Primary brand color for headings, nav, footer, and structure.</p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-slate-200 overflow-hidden">
+          <div class="h-20 bg-gold"></div>
+          <div class="p-4">
+            <p class="font-heading text-navy font-semibold">Gold</p>
+            <p class="text-sm text-neutral-600">#C7A24D</p>
+            <p class="mt-2 text-sm text-neutral-700">Accent color for highlights, icons, separators, and emphasis.</p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-slate-200 overflow-hidden">
+          <div class="h-20" style="background-color:#2A3B4C;"></div>
+          <div class="p-4">
+            <p class="font-heading text-navy font-semibold">Slate / Charcoal</p>
+            <p class="text-sm text-neutral-600">#2A3B4C</p>
+            <p class="mt-2 text-sm text-neutral-700">Optional supporting neutral for depth and contrast.</p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-slate-200 overflow-hidden">
+          <div class="h-20" style="background-color:#EDEBE7;"></div>
+          <div class="p-4">
+            <p class="font-heading text-navy font-semibold">Warm Off-White</p>
+            <p class="text-sm text-neutral-600">#EDEBE7</p>
+            <p class="mt-2 text-sm text-neutral-700">Soft neutral background color for spacious layouts.</p>
+          </div>
+        </div>
+      </div>
+      <p class="text-sm text-neutral-700">
+        Usage principle: navy should dominate, gold should accent sparingly, and all combinations must maintain strong accessibility contrast.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold">Typography</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="rounded-lg border border-slate-200 bg-white p-5">
+          <p class="text-xs tracking-[0.14em] uppercase text-neutral-500 mb-3">Heading Typeface</p>
+          <p class="font-heading text-3xl text-navy font-semibold mb-2">Montserrat</p>
+          <p class="font-heading text-navy text-lg tracking-[0.08em] uppercase">Section Headings & Navigation</p>
+          <p class="mt-3 text-sm text-neutral-700">Use Semibold/Bold with slight positive tracking for all-caps headings.</p>
+        </div>
+        <div class="rounded-lg border border-slate-200 bg-white p-5">
+          <p class="text-xs tracking-[0.14em] uppercase text-neutral-500 mb-3">Body Typeface</p>
+          <p class="font-body text-2xl text-navy font-medium mb-2">Inter</p>
+          <p class="font-body text-neutral-700">
+            Use Inter for paragraphs, support copy, and lists. Keep line length comfortable and avoid overly tight spacing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold">Asset Downloads</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          allAssets.map((asset) => (
+            <article class="rounded-lg border border-slate-200 bg-white overflow-hidden">
+              <div
+                class:list={[
+                  "min-h-36 p-4 flex items-center justify-center",
+                  asset.previewBg === "dark" ? "bg-navy" : "bg-neutral-50",
+                ]}
+              >
+                <img
+                  src={asset.previewSrc}
+                  alt={`${asset.label} preview`}
+                  class:list={[asset.className ?? "max-w-48", "h-auto"]}
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-4 space-y-2">
+                <h3 class="font-heading text-navy text-lg font-semibold">{asset.label}</h3>
+                <p class="text-sm text-neutral-700">{asset.usage}</p>
+                <a
+                  href={`/downloads/brand/${asset.downloadFile}`}
+                  download
+                  class="inline-flex text-sm font-medium text-gold hover:underline"
+                  aria-label={`Download ${asset.downloadFile}`}
+                >
+                  Download {asset.downloadFile}
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-heading text-navy text-2xl md:text-3xl font-semibold">All File Formats</h2>
+      <p class="text-sm text-neutral-700">
+        Direct downloads for SVG, PNG, and PDF source files.
+      </p>
+      <div class="rounded-lg border border-slate-200 bg-white p-5">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            fileDownloadGroups.map((group) => (
+              <section>
+                <h3 class="font-heading text-navy text-lg font-semibold mb-3">{group.title}</h3>
+                <ul class="space-y-2">
+                  {group.files.map((item) => (
+                    <li>
+                      <a
+                        href={`/downloads/brand/${item.file}`}
+                        download
+                        class="text-sm text-navy hover:text-gold hover:underline"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
